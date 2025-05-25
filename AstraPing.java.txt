@@ -1,0 +1,43 @@
+// Decompiled with: CFR 0.152
+// Class Version: 8
+package me.astracore.astraping;
+
+import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class AstraPing
+extends JavaPlugin {
+    public void onEnable() {
+        this.getLogger().info("AstraPing aktif!");
+    }
+
+    public void onDisable() {
+        this.getLogger().info("AstraPing devre dışı!");
+    }
+
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (cmd.getName().equalsIgnoreCase("ping")) {
+            if (sender instanceof Player) {
+                Player player = (Player)((Object)sender);
+                int ping = this.getPing(player);
+                player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "AstraPing" + ChatColor.DARK_GRAY + "] " + ChatColor.GRAY + "Pingin: " + ChatColor.GREEN + ping + "ms");
+            } else {
+                sender.sendMessage("Bu komut sadece oyuncular tarafından kullanılabilir.");
+            }
+            return true;
+        }
+        return false;
+    }
+
+    private int getPing(Player player) {
+        try {
+            return player.getClass().getMethod("getHandle", new Class[0]).invoke(player, new Object[0]).getClass().getField("ping").getInt(player.getClass().getMethod("getHandle", new Class[0]).invoke(player, new Object[0]));
+        }
+        catch (Exception e) {
+            return -1;
+        }
+    }
+}

@@ -1,0 +1,7 @@
+name: AstraPing
+version: 1.0
+main: me.astracore.astraping.AstraPing
+api-version: 1.8
+commands:
+  ping:
+    description: Oyuncunun pingini gösterir.
