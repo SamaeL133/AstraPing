@@ -1,2 +1,2 @@
 # AstraPing
-AstraPing göstergesi
+AstraPing göstergesi açık kaynak kodlu halini atıyorum. Kendi projenizde kullanabilirsiniz.
